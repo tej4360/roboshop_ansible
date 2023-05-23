@@ -5,7 +5,7 @@
 - name: Copy roboshop Config file
   ansible.builtin.copy:
     src: roboshop.conf
-    remote_src: true
+    remote_dest: true
     dest: /etc/nginx/default.d/roboshop.conf
 - name: Clean Old App content
   ansible.builtin.shell:
