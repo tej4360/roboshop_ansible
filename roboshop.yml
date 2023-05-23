@@ -1,0 +1,4 @@
+- name: rboshop setup using ansible
+  hosts: all
+  roles:
+    - "{{ role_name }}"
