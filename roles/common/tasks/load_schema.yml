@@ -5,13 +5,12 @@
       ansible.builtin.copy:
         src: mongo.repo
         dest: /etc/yum.repos.d
+
     - name: install mongo schema
       ansible.builtin.shell: yum install mongodb-org-shell -y
 
     - name: load schema
       ansible.builtin.shell: mongo --host {{ lookup('aws_ssm', '{{env}}.mongo_url', region='us-east-1' ) }} </app/schema/{{component}}.js
-
-
 
 - name: mysql block
   when: schema_setup == "mysql"
@@ -20,5 +19,6 @@
       ansible.builtin.yum:
         module: mysql
         state: installed
+
     - name: Load my sql Schema
       ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', '{{env}}.mysql_url', region='us-east-1' ) }} -uroot -p{{ lookup('aws_ssm', '{{env}}.mysql_pass', region='us-east-1' ) }} < /app/schema/{{component}}.sql
