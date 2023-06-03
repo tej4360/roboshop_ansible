@@ -5,7 +5,7 @@
     name: nodejs
     state: installed
 - name: get_app_content
-    ansible.builtin.import_tasks:
+  ansible.builtin.import_tasks:
       file: get_app_content
 - name: Install dependencies
   ansible.builtin.shell: npm install
