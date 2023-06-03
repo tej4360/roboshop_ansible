@@ -3,8 +3,8 @@
   block:
     - name: copy mongo repo
       ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d
+        src: mongo.repo
+        dest: /etc/yum.repos.d
     - name: install mongo schema
       ansible.builtin.shell: yum install mongodb-org-shell -y
 
