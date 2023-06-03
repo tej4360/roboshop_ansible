@@ -1,3 +1,4 @@
-- name: frontend
-  ansible.builtin.debug:
-    msg: cart end service
+- name: setup cart
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: nodejs

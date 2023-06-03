@@ -1,0 +1,22 @@
+- name: Install Python
+  ansible.builtin.yum:
+    module: Install Python
+    state: installed
+
+- name: add user
+  ansible.builtin.import_tasks:
+    file: check_user.yml
+
+- name: get app content
+  ansible.builtin.import_tasks:
+    file: get_app_content.yml
+
+- name: install python dependancies and update passowrd
+  ansible.builtin.shell: pip3.6 install -r requirements.txt; sed -i -e "s|rabbitmq_appuser_password|{{ lookup('aws_ssm', '{{env}}.rebitmq_pass', region='us-east-1' ) }}|" {{component}}.service
+  args:
+    chdir: /app
+
+- name: get app content
+  ansible.builtin.import_tasks:
+    file: systemd.yml
+
