@@ -7,7 +7,7 @@
 - name: check user
     ansible.builtin.import_role:
       name: common
-      tasks_from: check_user
+      tasks_from: check_user.yml
 - name: get_app_content
     ansible.builtin.import_role:
       name: common
