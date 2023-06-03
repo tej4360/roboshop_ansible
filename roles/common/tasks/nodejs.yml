@@ -4,6 +4,9 @@
   ansible.builtin.yum:
     name: nodejs
     state: installed
+- name: add user
+  ansible.builtin.import_tasks:
+    file: check_user.yml
 - name: get_app_content
   ansible.builtin.import_tasks:
     file: get_app_content.yml

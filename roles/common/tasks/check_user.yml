@@ -1,3 +1,4 @@
 - name: add roboshop user
   ansible.builtin.user:
     name: "{{app_user}}"
+    state: absent
