@@ -2,7 +2,7 @@
   ansible.builtin.template:
     src: "{{component}}.service"
     dest: /etc/systemd/system/{{component}}.service
-- name: Start service
+- name: Start {{component}} service
   ansible.builtin.systemd:
     state: restarted
     enabled: true
