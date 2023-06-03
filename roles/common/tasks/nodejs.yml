@@ -6,15 +6,15 @@
     state: installed
 - name: get_app_content
   ansible.builtin.import_tasks:
-      file: get_app_content
+      file: get_app_content.yml
 - name: Install dependencies
   ansible.builtin.shell: npm install
   args:
     chdir: /app
 - name: setup mongo
   ansible.builtin.import_tasks:
-    file: load_schema
+    file: load_schema.yml
 - name: systemd
   ansible.builtin.import_tasks:
-    file: systemd
+    file: systemd.yml
 
