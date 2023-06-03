@@ -1,27 +1,4 @@
-- name: Setup Node JS
-  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x
-- name: install nodejs
-  ansible.builtin.yum:
-    name: nodejs
-    state: installed
-- name: check user
+- name: setup catalogue
     ansible.builtin.import_role:
       name: common
-      tasks_from: check_user.yml
-- name: get_app_content
-    ansible.builtin.import_role:
-      name: common
-      tasks_from: get_app_content
-- name: Install dependencies
-  ansible.builtin.shell: npm install
-  args:
-    chdir: /app
-- name: setup mongo
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: load_schema
-- name: systemd
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: systemd
-
+      tasks_from: nodejs

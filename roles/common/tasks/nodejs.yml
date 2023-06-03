@@ -1,0 +1,20 @@
+- name: Setup Node JS
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x
+- name: install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+- name: get_app_content
+    ansible.builtin.import_tasks:
+      file: get_app_content
+- name: Install dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+- name: setup mongo
+  ansible.builtin.import_tasks:
+    file: load_schema
+- name: systemd
+  ansible.builtin.import_tasks:
+    file: systemd
+
