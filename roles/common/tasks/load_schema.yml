@@ -7,6 +7,5 @@
   ansible.builtin.yum:
     name: mongodb-org-shell
     state: installed
-
 - name: load schema
   ansible.builtin.shell: mongo --host {{ lookup( 'aws_ssm', '{{env}}.mongo_url', region='us_east_1' ) }} </app/schema/{{component}}.js
