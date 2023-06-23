@@ -1,7 +1,6 @@
 - name: Install Maven
   ansible.builtin.yum:
     module: java-17-openjdk
-    status: installed
 
 - name: create user
   ansible.builtin.import_tasks:
