@@ -10,10 +10,10 @@
 - name: get app content
   ansible.builtin.import_tasks:
     file: get_app_content.yml
-- name: Download Maven Dependencies
-  ansible.builtin.shell: mvn clean package; mv target/${component}-1.0.jar ${component}.jar
-  args:
-    chdir: /app
+#- name: Download Maven Dependencies
+#  ansible.builtin.shell: mvn clean package; mv target/${component}-1.0.jar ${component}.jar
+#  args:
+#    chdir: /app
 
 - name: mysql schema setup
   ansible.builtin.import_tasks:
