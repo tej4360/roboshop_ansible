@@ -17,7 +17,7 @@
   block:
     - name: install mysql - {{ schema_setup }}
       ansible.builtin.yum:
-        module: mysql
+        name: mysql
         state: installed
 
     - name: Load my sql Schema
