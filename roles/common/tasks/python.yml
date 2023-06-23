@@ -1,6 +1,6 @@
 - name: Install Python
   ansible.builtin.yum:
-    name: python
+    name: Python
     state: installed
 
 - name: add user
