@@ -15,7 +15,7 @@
     file: get_app_content.yml
 
 - name: install python dependancies and update passowrd
-  ansible.builtin.shell: pip3.6 install -r requirements.txt; sed -i -e "s|rabbitmq_appuser_password|{{ lookup('aws_ssm', '{{env}}.rebitmq_pass', region='us-east-1' ) }}|" {{component}}.service
+  ansible.builtin.shell: pip3.6 install -r requirements.txt; sed -i -e "s|rabbitmq_appuser_password|{{ lookup('aws_ssm', '{{env}}.rabitmq_pass', region='us-east-1' ) }}|" {{component}}.service
   args:
     chdir: /app
 
