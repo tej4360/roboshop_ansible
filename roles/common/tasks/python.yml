@@ -1,7 +1,6 @@
-- name: Install Python
-  ansible.builtin.yum:
-    name: Python
-    state: installed
+- name: Install bottle python package
+  ansible.builtin.pip:
+    name: bottle
 
 - name: add user
   ansible.builtin.import_tasks:
