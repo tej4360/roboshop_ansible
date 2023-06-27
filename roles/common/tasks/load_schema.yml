@@ -4,7 +4,7 @@
     - name: copy mongo repo - {{ schema_setup }}
       ansible.builtin.copy:
         src: mongo.repo
-        dest: /etc/yum.repos.d
+        dest: /etc/yum.repos.d/mongo.repo
 
     - name: install mongo schema
       ansible.builtin.yum:
