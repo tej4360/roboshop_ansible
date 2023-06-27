@@ -7,7 +7,9 @@
         dest: /etc/yum.repos.d
 
     - name: install mongo schema
-      ansible.builtin.shell: yum install mongodb-org-shell -y
+      ansible.builtin.yum:
+        name: mongodb-org-shell
+        state: installed
 
     - name: load schema
       ansible.builtin.shell: mongo --host {{ lookup('aws_ssm', '{{env}}.mongo_url', region='us-east-1' ) }} </app/schema/{{component}}.js
