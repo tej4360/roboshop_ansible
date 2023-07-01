@@ -1,6 +1,6 @@
 - name: roboshop setup using ansible
   hosts: all
   become: yes
-#  become will run this as root
+#  become will run this as root, this is called previlage escaltion.
   roles:
     - "{{ role_name }}"
