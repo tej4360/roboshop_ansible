@@ -4,11 +4,11 @@ Description=Payment Service
 [Service]
 User=root
 WorkingDirectory=/app
-Environment=CART_HOST={{ lookup('aws_ssm', '{{env}}.payment.cart_url', region='us-east-1' ) }}
-Environment=CART_PORT={{ lookup('aws_ssm', '{{env}}.payment.cart_port', region='us-east-1' ) }}
-Environment=USER_HOST={{ lookup('aws_ssm', '{{env}}.payment.user_url', region='us-east-1' ) }}
-Environment=USER_PORT={{ lookup('aws_ssm', '{{env}}.payment.user_port', region='us-east-1' ) }}
-Environment=AMQP_HOST={{ lookup('aws_ssm', '{{env}}.payment.rabitmq_url', region='us-east-1' ) }}
+Environment=CART_HOST={{ lookup('aws_ssm', '{{ env }}.payment.cart_url', region='us-east-1' ) }}
+Environment=CART_PORT={{ lookup('aws_ssm', '{{ env }}.payment.cart_port', region='us-east-1' ) }}
+Environment=USER_HOST={{ lookup('aws_ssm', '{{ env }}.payment.user_url', region='us-east-1' ) }}
+Environment=USER_PORT={{ lookup('aws_ssm', '{{ env }}.payment.user_port', region='us-east-1' ) }}
+Environment=AMQP_HOST={{ lookup('aws_ssm', '{{ env }}.payment.rabitmq_url', region='us-east-1' ) }}
 Environment=AMQP_USER=roboshop
 Environment=AMQP_PASS={{ lookup('aws_ssm', '{{ env }}.payment_pass', region='us-east-1' ) }}
 
