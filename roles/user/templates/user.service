@@ -3,8 +3,8 @@ Description = User Service
 [Service]
 User=roboshop
 Environment=MONGO=true
-Environment=REDIS_HOST={{ lookup('aws_ssm', '{{env}}.user.redis_url', region='us-east-1' ) }}
-Environment=MONGO_URL="mongodb://{{ lookup('aws_ssm', '{{env}}.user.mongo_url', region='us-east-1' ) }}:{{ lookup('aws_ssm', '{{env}}.user.mongo_port', region='us-east-1' ) }}/users"
+Environment=REDIS_HOST={{ lookup('aws_ssm', 'user.{{env}}.redis_url', region='us-east-1' ) }}
+Environment=MONGO_URL="mongodb://{{ lookup('aws_ssm', 'user.{{env}}.mongo_url', region='us-east-1' ) }}:{{ lookup('aws_ssm', 'user.{{env}}.mongo_port', region='us-east-1' ) }}/users"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=user
 
