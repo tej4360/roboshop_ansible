@@ -1,5 +1,6 @@
 - name: roboshop setup using ansible
   hosts: all
   become: yes
+#  become will run this as root
   roles:
     - "{{ role_name }}"
