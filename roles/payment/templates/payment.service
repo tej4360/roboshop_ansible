@@ -10,7 +10,7 @@ Environment=USER_HOST={{ lookup('aws_ssm', '{{ env }}.payment.user_url', region=
 Environment=USER_PORT={{ lookup('aws_ssm', '{{ env }}.payment.user_port', region='us-east-1' ) }}
 Environment=AMQP_HOST={{ lookup('aws_ssm', '{{ env }}.payment.rabitmq_url', region='us-east-1' ) }}
 Environment=AMQP_USER=roboshop
-Environment=AMQP_PASS={{ lookup('aws_ssm', '{{ env }}.payment_pass', region='us-east-1', decrypt=true ) }}
+Environment=AMQP_PASS={{ lookup('aws_ssm', '{{ env }}.payment_pass', region='us-east-1' ) }}
 
 ExecStart=/usr/local/bin/uwsgi --ini payment.ini
 ExecStop=/bin/kill -9 $MAINPID
