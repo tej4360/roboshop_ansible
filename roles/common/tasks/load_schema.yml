@@ -23,4 +23,4 @@
         state: installed
 
     - name: Load my sql Schema
-      ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', '{{ env }}.{{ component }}.mysql_url', region='us-east-1' ) }} -uroot -p{{ lookup('aws_ssm', '{{ env }}.mysql_pass', region='us-east-1', decrypt=true, aws_access_key='b051b135-92e8-49ff-a98f-5f141dbc8087' ) }} < /app/schema/{{ component }}.sql
+      ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', '{{ env }}.{{ component }}.mysql_url', region='us-east-1' ) }} -uroot -p{{ lookup('aws_ssm', '{{ env }}.mysql_pass', region='us-east-1', decrypt=true, aws_secret_key='b051b135-92e8-49ff-a98f-5f141dbc8087' ) }} < /app/schema/{{ component }}.sql
