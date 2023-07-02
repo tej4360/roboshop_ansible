@@ -19,7 +19,7 @@
   args:
     chdir: /app
 
-- name: get app content
+- name: systemd service
   ansible.builtin.import_tasks:
     file: systemd.yml
 
