@@ -20,7 +20,7 @@
     - name: install mysql - {{ schema_setup }}
       ansible.builtin.yum:
         name: mysql
-        state: instal led
+        state: installed
 
     - name: Load my sql Schema
       ansible.builtin.shell: mysql -h {{ lookup('aws_ssm', '{{ env }}.{{ component }}.mysql_url', region='us-east-1' ) }} -uroot -p{{ lookup('aws_ssm', '{{ env }}.mysql_pass', region='us-east-1' ) }} < /app/schema/{{ component }}.sql
