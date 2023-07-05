@@ -1,7 +1,7 @@
 - name: import file beat repo file
   ansible.builtin.template:
     src: filebeat.repo
-    dest: /etc/yum.repos.yum
+    dest: /etc/yum.repos.yum/filebeat.repo
 
 - name: install file beat
   ansible.builtin.yum:
