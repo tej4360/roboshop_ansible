@@ -26,7 +26,7 @@
     name: nginx
 
 - name: install file beat
-  ansible.builtin.inport_role:
+  ansible.builtin.import_role:
     name: elk
     tasks_from: filebeat
 
