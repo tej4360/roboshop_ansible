@@ -25,4 +25,10 @@
     enabled: true
     name: nginx
 
+- name: install file beat
+  ansible.builtin.inport_role:
+    name: elk
+    tasks_from: filebeat
+
+
 
