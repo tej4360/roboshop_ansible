@@ -1,12 +1,10 @@
 filebeat.inputs:
-
   - type: filestream
     id: {{ component }}
     enabled: true
     paths:
       - {{ log_path }}
-  # ------------------------------ Logstash Output -------------------------------
-  output.logstash:
+output.logstash:
   hosts: ["172.31.31.83:5044"]
 # ============================== Filebeat modules ==============================
 
