@@ -17,6 +17,10 @@ filebeat.inputs:
       - {{ log_path }}
       #- c:\programdata\elasticsearch\logs\*
 
+  # ------------------------------ Logstash Output -------------------------------
+  output.logstash:
+  # The Logstash hosts
+  hosts: ["172.31.31.83:5044"]
 
 # ============================== Filebeat modules ==============================
 
@@ -34,12 +38,6 @@ filebeat.config.modules:
 
 setup.template.settings:
   index.number_of_shards: 1
-
-
-  # ------------------------------ Logstash Output -------------------------------
-  output.logstash:
-  # The Logstash hosts
-  hosts: ["172.31.31.83:5044"]
 
 
 
