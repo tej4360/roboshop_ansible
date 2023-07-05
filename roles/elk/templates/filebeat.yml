@@ -5,21 +5,12 @@
 filebeat.inputs:
 
   - type: filestream
-
-    # Unique ID among all inputs, an ID is required.
     id: {{ component }}
-
-    # Change to true to enable this input configuration.
     enabled: true
-
-    # Paths that should be crawled and fetched. Glob based paths.
     paths:
       - {{ log_path }}
-      #- c:\programdata\elasticsearch\logs\*
-
   # ------------------------------ Logstash Output -------------------------------
   output.logstash:
-  # The Logstash hosts
   hosts: ["172.31.31.83:5044"]
 
 # ============================== Filebeat modules ==============================
