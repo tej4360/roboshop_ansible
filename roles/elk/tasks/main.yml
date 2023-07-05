@@ -1,0 +1,10 @@
+- name: elk logstash conf file copy
+  ansible.builtin.template:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+
+- name: systemd load
+  ansible.builtin.systemd:
+    name: logstash
+    state: restarted
+    enable: true

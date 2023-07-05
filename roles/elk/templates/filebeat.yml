@@ -4,8 +4,11 @@ filebeat.inputs:
     enabled: true
     paths:
       - {{ log_path }}
+    fields:
+      component: { { component ] } }
 output.logstash:
   hosts: ["172.31.31.83:5044"]
+
 # ============================== Filebeat modules ==============================
 
 filebeat.config.modules:
