@@ -10,7 +10,7 @@
 
 - name: copy file beat config file
   ansible.builtin.template:
-    src: filebeat.repo
+    src: filebeat.yml
     dest: /etc/filebeat/filebeat.yml
 
 - name: systemd reload
