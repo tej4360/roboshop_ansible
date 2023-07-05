@@ -1,5 +1,5 @@
 - name: import file beat repo file
-  ansible.builtin.templates:
+  ansible.builtin.template:
     src: elk.repo
     dest: /etc/yum.repos.yum
 
@@ -9,7 +9,7 @@
     state: installed
 
 - name: copy file beat config file
-  ansible.builtin.templates:
+  ansible.builtin.template:
     src: filebeat.repo
     dest: /etc/filebeat/filebeat.yml
 
