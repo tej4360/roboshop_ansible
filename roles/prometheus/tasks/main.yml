@@ -7,3 +7,4 @@
   ansible.builtin.systemd:
     state: restarted
     enabled: true
+    name: prometheus
