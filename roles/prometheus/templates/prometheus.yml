@@ -9,7 +9,6 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-          # - alertmanager:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -30,10 +29,14 @@ scrape_configs:
         filters:
           - name: tag:Monitor
             values: [ "true" ]
-
     relabel_configs:
-      {% for label in labels %}
-
-      - source_labels: [ __meta_ec2_tag_{{ label.tag }} ]
-        target_label: {{ label.label }}
-      {%- endfor %}
+      - source_labels: [ __meta_ec2_tag_Name ]
+        target_label: name
+      - source_labels: [ __meta_ec2_tag_env ]
+        target_label: env
+#    relabel_configs:
+#      {% for label in labels %}
+#
+#      - source_labels: [ __meta_ec2_tag_{{ label.tag }} ]
+#        target_label: {{ label.label }}
+#      {%- endfor %}
