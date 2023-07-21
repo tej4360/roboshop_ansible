@@ -3,7 +3,7 @@
     name: common
     tasks_from: java
 
-- name: install prometheus node exporter
-  ansible.builtin.import_role:
-    name: prometheus
-    tasks_from: node_exporter
+#- name: install prometheus node exporter
+#  ansible.builtin.import_role:
+#    name: prometheus
+#    tasks_from: node_exporter
