@@ -2,7 +2,7 @@ groups:
   - name: EC2 Service Alerts
     rules:
       - alert: HighCPUUtilization
-        expr: 100-(avg by (name, env, instance, job) (rate(node_cpu_seconds_total{mode="idle"} [1m])*100)) > 30
+        expr: (100-(avg by (name, env, instance, job) (rate(node_cpu_seconds_total{mode="idle"} [1m])*100))) > 30
         for: 1m
         labels:
           severity: page
