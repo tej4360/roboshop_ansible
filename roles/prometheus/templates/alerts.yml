@@ -1,35 +1,36 @@
 groups:
-  - name: EC2 Service Alerts
-    rules:
-    - alert: HighCPUUtilization
-      expr: 100-(avg by (name, env, instance, job) (rate(node_cpu_seconds_total{mode="idle"} [1m])*100)) > 30
-      for: 1m
-      labels:
-        severity: page
-      annotations:
-        summary: High CPU Utilization
-    - alert: HighMemoryUtilization
-      expr: 100- ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes)/ node_memory_MemTotal_bytes)*100 > 80
-      for: 1m
-      labels:
-        severity: page
-      annotations:
-        summary: High Memory Utilization
+- name: EC2 Service Alerts
+  rules:
+  - alert: HighCPUUtilization
+    expr: 100-(avg by (name, env, instance, job) (rate(node_cpu_seconds_total{mode="idle"} [1m])*100)) > 30
+    for: 1m
+    labels:
+      severity: page
+    annotations:
+      summary: High CPU Utilization
 
-    - alert: ServerDown
-      expr: up < 1
-      for: 1m
-      labels:
-        severity: page
-      annotations:
-        summary: EC2 Server Down
-    {% for component in components %}
+  - alert: HighMemoryUtilization
+    expr: 100- ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes)/ node_memory_MemTotal_bytes)*100 > 80
+    for: 1m
+    labels:
+      severity: page
+    annotations:
+      summary: High Memory Utilization
 
-    - alert: ServiceDown
-      expr: node_systemd_unit_state{exported_name="{{ component.service_name }}.service", state="active"} < 1
-      for: 1m
-      labels:
-        severity: page
-      annotations:
-        summary: {{ component.name }}.service - Service Down
-    {%- endfor %}
+  - alert: ServerDown
+    expr: up < 1
+    for: 1m
+    labels:
+      severity: page
+    annotations:
+      summary: EC2 Server Down
+  {% for component in components %}
+
+  - alert: ServiceDown
+    expr: node_systemd_unit_state{exported_name="{{ component.service_name }}.service", state="active"} < 1
+    for: 1m
+    labels:
+      severity: page
+    annotations:
+      summary: {{ component.name }}.service - Service Down
+  {%- endfor %}
