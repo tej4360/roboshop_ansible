@@ -1,8 +1,10 @@
 - name: copy prometheus yml config file
   ansible.builtin.template:
-    src: prometheus.yml
-    dest: /opt/prometheus/
-
+    src: {{item}}.yml
+    dest: /opt/prometheus/{{item}}.yml
+  loop:
+    - prometheus
+    - alerts
 - name: restart prometheus service
   ansible.builtin.systemd:
     state: restarted
